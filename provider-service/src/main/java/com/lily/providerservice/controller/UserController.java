@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lily.providerservice.pojo.User;
 import com.lily.providerservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,11 +24,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Value("${server.port}")
+    private String port;
+
     @RequestMapping("/findAll")
     private String findAll() throws JsonProcessingException {
         List<User> all = userService.findAll();
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.writeValueAsString(all);
+
+        return objectMapper.writeValueAsString(all)+ "/n/r 端口号: "+ port;
     }
 
 }

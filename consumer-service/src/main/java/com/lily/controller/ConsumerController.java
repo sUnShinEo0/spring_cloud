@@ -28,11 +28,12 @@ public class ConsumerController {
 
     @RequestMapping("/findAll")
     private String findAll() {
-        List<ServiceInstance> instances = discoveryClient.getInstances("provider-service");
-        ServiceInstance instanceInfo = instances.get(0);
-        String hostName = instanceInfo.getHost();
-        int port = instanceInfo.getPort();
-        return restTemplate.getForObject("http://" + hostName +":"+ port + "/user/findAll", String.class);
+//        List<ServiceInstance> instances = discoveryClient.getInstances("provider-service");
+//        ServiceInstance instanceInfo = instances.get(0);
+//        String hostName = instanceInfo.getHost();
+//        int port = instanceInfo.getPort();
+//        return restTemplate.getForObject("http://" + hostName +":"+ port + "/user/findAll", String.class);
+        return restTemplate.getForObject("http://provider-service/user/findAll",String.class);
     }
 
 }
