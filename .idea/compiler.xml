@@ -9,11 +9,13 @@
         <module name="eurake-server" />
         <module name="sprindcloud02" />
         <module name="provider-service" />
+        <module name="consumer-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="consumer-service" options="-parameters" />
       <module name="eurake-server" options="-parameters" />
       <module name="provider-service" options="-parameters" />
     </option>
